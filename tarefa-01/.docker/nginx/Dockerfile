@@ -8,5 +8,5 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 WORKDIR /var/www
-#COPY ./nginx.conf /etc/nginx/conf.d
+#COPY /nginx.conf /etc/nginx/conf.d
 #ENTRYPOINT [nginx, '-g', 'daemon off;']
