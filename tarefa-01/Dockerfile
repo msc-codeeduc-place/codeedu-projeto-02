@@ -25,4 +25,4 @@ RUN ln -s public html
 #RUN php artisan migrate
 
 EXPOSE 9000
-ENTRYPOINT [ "php-fpm" ]
+#ENTRYPOINT [ "php-fpm" ]
