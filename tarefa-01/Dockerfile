@@ -16,12 +16,5 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 RUN rm -rf /var/www/html
 RUN ln -s public html
 
-# RUN composer install && \
-#     cp .env.exemple .env && \
-#     php artisan key:generate && \
-#     php artisan config:cache
-
-#RUN php artisan migrate
-
 EXPOSE 9000
-#ENTRYPOINT [ "php-fpm" ]
+ENTRYPOINT dockerize -template ./env.tmpl:./.env -wait tcp://db:3306 -timeout 40s ./entrypoint.sh
