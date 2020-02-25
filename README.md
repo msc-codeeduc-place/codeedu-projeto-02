@@ -4,7 +4,7 @@ Para rodar as aplicações siga os passos abaixo:
 
 Clone o aplicativo
 ```
-git clone https://github.com/milsonei/code-education-projeto-02.git milsonei-desafio-docker
+git clone https://github.com/milsonei/codeedu-projeto-02.git milsonei-desafio-docker
 ```
 Mude para o diretório milsonei-desafio-docker
 ```
@@ -29,4 +29,4 @@ Execute o comando docker run
 ```
 docker run milsonei/codeeducation 
 ```
-O código fonte da **2ª tarefa** encontra-se no diretório **tarefa-02** e a **imagem do binário** encontra-se em ***https://hub.docker.com/repository/docker/milsonei/codeeducation***
+O código fonte da **2ª tarefa** encontra-se no diretório **tarefa-02** e a **imagem do binário** encontra-se em ***[https://hub.docker.com/repository/docker/milsonei/codeeducation](https://hub.docker.com/repository/docker/milsonei/codeeducation)***
