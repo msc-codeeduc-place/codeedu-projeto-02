@@ -24,10 +24,19 @@ Acesse a aplicação pelo browser de sua preferência
 ```
 http://localhost:8000/
 ```
-#### Solução
-A chamada do **dockerize** foi incluída nos arquivos **Dockerfile** da **aplicação** e do **nginx** e não no ***docker-compose.yaml***.
+#### Solução de problema de execução de script .sh no docker sob ambiente Windows
+Ao baixar o arquivo do **GitHub** usando o comando **git clone** no **ambiente Windows**, as quebras de linha nos arquivos de script ***.sh*** são convertidos de **LF** para **CRLF**, sendo assim, ao tentar executar os scripts a partir do **Docker**, ocorre o problema de ***arquivo não encontrado***.
 
-O motivo foi os sucessivos erros de ***arquivo não encontrado***.
+Para resolver esse problema foi necessário executar o comando **dos2unix** no script após fazer a cópia para o **contexto de contrução** do Docker.
+
+```
+COPY ./entrypoint-app.sh /entrypoint.sh
+RUN dos2unix /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+```
+
+A execução do **Dockerise** para renderização dos templates, foi transferida para o script ***.sh***.
 
 ### Passos para executar a 2ª Tarefa
 Execute o comando docker run
