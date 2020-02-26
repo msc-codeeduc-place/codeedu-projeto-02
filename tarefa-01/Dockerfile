@@ -19,6 +19,7 @@ EXPOSE 9000
 # Copia o script para a raiz do contexto de construção
 # build: .
 COPY ./entrypoint-app.sh /entrypoint.sh
+# Converte o arquivo para o formato Unix -> CRLF para LF
 RUN dos2unix /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

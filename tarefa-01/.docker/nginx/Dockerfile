@@ -13,6 +13,7 @@ WORKDIR /var/www
 #build: .docker/nginx
 
 COPY ./entrypoint-nginx.sh /entrypoint.sh
+# Converte o arquivo para o formato Unix -> CRLF para LF
 RUN dos2unix /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
