@@ -19,4 +19,5 @@ EXPOSE 9000
 # Copia o script para a raiz do contexto de construção
 # build: .
 COPY ./entrypoint-app.sh /
+RUN chmod +x /entrypoint-app.sh
 ENTRYPOINT ["/entrypoint-app.sh"]

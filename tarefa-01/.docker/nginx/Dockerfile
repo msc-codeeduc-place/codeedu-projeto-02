@@ -12,5 +12,5 @@ WORKDIR /var/www
 #No ponto de vista da contrução, estou dentro de ./.docker/nginx
 #build: .docker/nginx
 COPY ./entrypoint-nginx.sh /
-
+RUN chmod +x /entrypoint-nginx.sh
 ENTRYPOINT ["/entrypoint-nginx.sh"]
