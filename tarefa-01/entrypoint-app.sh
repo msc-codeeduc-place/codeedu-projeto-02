@@ -4,7 +4,7 @@
 # Trecho da configuração no docker-compose.yaml.
 #  volumes:
 #      - .:/var/www
-dockerize -template ./env.tmpl:./.env
+dockerize -template ./env.tmpl:./.env -wait tcp://db:3306
 chown -R www-data:www-data /var/www/storage
 chmod -R 755 /var/www/storage
 
