@@ -1,5 +1,5 @@
 FROM nginx:alpine
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash dos2unix
 RUN rm /etc/nginx/conf.d/default.conf
 
 ENV DOCKERIZE_VERSION v0.6.1
@@ -11,6 +11,8 @@ WORKDIR /var/www
 
 #No ponto de vista da contrução, estou dentro de ./.docker/nginx
 #build: .docker/nginx
-COPY ./entrypoint-nginx.sh /
-RUN chmod +x /entrypoint-nginx.sh
-ENTRYPOINT ["/entrypoint-nginx.sh"]
+
+COPY ./entrypoint-nginx.sh /entrypoint.sh
+RUN dos2unix /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

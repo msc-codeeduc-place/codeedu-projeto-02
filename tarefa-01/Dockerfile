@@ -1,7 +1,7 @@
 #Ambiente de desenvolvimento
 FROM php:fpm-alpine
 
-RUN apk add --no-cache openssl bash mysql-client nodejs npm
+RUN apk add --no-cache openssl bash mysql-client nodejs npm dos2unix
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -18,6 +18,7 @@ RUN ln -s public html
 EXPOSE 9000
 # Copia o script para a raiz do contexto de construção
 # build: .
-COPY ./entrypoint-app.sh /
-RUN chmod +x /entrypoint-app.sh
-ENTRYPOINT ["/entrypoint-app.sh"]
+COPY ./entrypoint-app.sh /entrypoint.sh
+RUN dos2unix /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
