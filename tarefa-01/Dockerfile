@@ -15,6 +15,8 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 RUN rm -rf /var/www/html
 RUN ln -s public html
-
 EXPOSE 9000
-ENTRYPOINT dockerize -template ./env.tmpl:./.env -wait tcp://db:3306 -timeout 40s ./entrypoint.sh
+# Copia o script para a raiz do contexto de construção
+# build: .
+COPY ./entrypoint-app.sh /
+ENTRYPOINT ["/entrypoint-app.sh"]
